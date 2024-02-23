@@ -1,0 +1,100 @@
+<div class="container mt-3">
+    <h1 class="heading">Add Entity</h1>
+    <form [formGroup]="entityForm" #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-lg-12 mb-4 mb-sm-5">
+                <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                    <div class="row">
+                        <div class="col-lg-12 px-xl-10">
+                            <div>
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Name</mat-label>
+                                    <input formControlName="name" matInput />
+                                    <mat-error *ngIf="form.submitted && entityForm.controls['name'].errors?.['required']">
+                                        Name is required
+                                    </mat-error>
+                                    <mat-error *ngIf="form.submitted && entityForm.controls['name'].errors?.['minlength']">
+                                        Name should have min 4 characters
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Type</mat-label>
+                                    <mat-select formControlName="type">
+                                        <mat-option *ngFor="let t of type" [value]="t">
+                                            {{ t }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <h2>
+                                Add Bank Details
+                                <button mat-raised-button color="primary" (click)="addBankAcc()">
+                                    Add Account
+                                </button>
+                            </h2>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div formArrayName="bankAccount">
+                                        <div *ngFor=" let controls of bankAccount.controls;let i = index">
+                                            <div [formGroupName]="i" class="form-row">
+                                                <mat-form-field appearance="outline" class="inner-form">
+                                                    <mat-label>Bank Holder Name</mat-label>
+                                                    <input formControlName="holderName" matInput />
+                                                    <mat-error *ngIf="form.submitted && bankAccount.controls[i].get('holderName')?.hasError('required')">
+                                                        Holder Name is required
+                                                    </mat-error>
+                                                </mat-form-field>
+
+                                                <mat-form-field appearance="outline" class="inner-form">
+                                                    <mat-label>Bank Name</mat-label>
+                                                    <input formControlName="bankName" matInput />
+                                                    <mat-error *ngIf="form.submitted && bankAccount.controls[i].get('bankName')?.hasError('required')">
+                                                        Bank name is required
+                                                    </mat-error>
+                                                </mat-form-field>
+
+                                                <mat-form-field appearance="outline" class="inner-form">
+                                                    <mat-label>Account Number</mat-label>
+                                                    <input formControlName="accountNumber" matInput />
+                                                    <mat-error *ngIf="form.submitted && bankAccount.controls[i].get('accountNumber')?.hasError('required')">
+                                                        Account Number is required
+                                                    </mat-error>
+                                                    <mat-error *ngIf="form.submitted && bankAccount.controls[i].get('accountNumber')?.hasError('pattern')">
+                                                        Format doesn't match
+                                                    </mat-error>
+                                                </mat-form-field>
+
+                                                <mat-form-field appearance="outline" class="inner-form">
+                                                    <mat-label>IFSC</mat-label>
+                                                    <input formControlName="ifsc" matInput />
+                                                    <mat-error *ngIf="form.submitted && bankAccount.controls[i].get('ifsc')?.hasError('required')">
+                                                        IFSC is required
+                                                    </mat-error>
+                                                    <mat-error *ngIf="form.submitted && bankAccount.controls[i].get('ifsc')?.hasError('pattern')">
+                                                        Format doesn't match
+                                                    </mat-error>
+                                                </mat-form-field>
+                                                <button mat-icon-button (click)="deleteCol(i)" *ngIf="i > 0" color="warn" aria-label="Example icon button with a delete icon">
+                                                    <mat-icon>delete</mat-icon>
+                                                  </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button class="mt-2" mat-raised-button color="primary">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

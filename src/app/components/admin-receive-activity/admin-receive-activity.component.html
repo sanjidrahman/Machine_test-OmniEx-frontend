@@ -1,0 +1,69 @@
+<div class="container mt-2">
+    <div class="d-flex justify-content-end mt-3">
+        <button [routerLink]="['/admin/receive-record']" mat-raised-button color="primary" class="mb-4"
+            type="submit">Add Record</button>
+    </div>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="buyer">
+                <th mat-header-cell *matHeaderCellDef> Buyer </th>
+                <td mat-cell *matCellDef="let element"> {{element.buyerId.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="supplier">
+                <th mat-header-cell *matHeaderCellDef> Supplier </th>
+                <td mat-cell *matCellDef="let element"> {{element.supplierId.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="rate">
+                <th mat-header-cell *matHeaderCellDef> Rate </th>
+                <td mat-cell *matCellDef="let element"> {{element.rate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.date | date}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="amount">
+                <th mat-header-cell *matHeaderCellDef> Amount </th>
+                <td mat-cell *matCellDef="let element"> {{element.amount | currency: "USD"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element">
+                    <div>
+                        <button class="btn" mat-icon-button color="warn" (click)="onDelete(element._id)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <button class="btn" mat-icon-button color="primary" (click)="onEdit(element._id)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button class="btn" mat-icon-button color="primary" (click)="onView(element._id)">
+                            <mat-icon>receipt</mat-icon>
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </div>
+</div>

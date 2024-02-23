@@ -1,0 +1,74 @@
+<div class="container mt-3">
+    <h2 class="heading">Add Send Record</h2>
+    <form [formGroup]="sendRecord" #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-lg-12 mb-4 mb-sm-5">
+                <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                    <div class="row">
+                        <div class="col-lg-12 px-xl-10">
+                            <div>
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Buyer Entity</mat-label>
+                                    <mat-select formControlName="buyer">
+                                        <mat-option *ngFor="let b of buyer" [value]="b">
+                                            {{ b.name }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Supplier Entity</mat-label>
+                                    <mat-select formControlName="supplier">
+                                        <mat-option *ngFor="let s of supplier" [value]="s">
+                                            {{ s.name }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Amount</mat-label>
+                                    <input formControlName="amount" matInput />
+                                    <mat-error
+                                        *ngIf="form.submitted && sendRecord.controls['amount'].errors?.['required']">
+                                        Amount is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field class="datepicker" appearance="outline" class="example-full-width">
+                                    <mat-label>Choose a date</mat-label>
+                                    <input formControlName="date" class="example-full-width" matInput [matDatepicker]="picker">
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="mt-2">
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Time</mat-label>
+                                    <input formControlName="time" matInput [ngxTimepicker]="time">
+                                    <ngx-material-timepicker #time></ngx-material-timepicker>
+                                    <mat-error
+                                        *ngIf="form.submitted && sendRecord.controls['time'].errors?.['required']">
+                                        Time is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <button class="mt-2" mat-raised-button color="primary">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

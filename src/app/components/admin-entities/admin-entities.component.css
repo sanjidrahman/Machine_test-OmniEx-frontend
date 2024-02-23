@@ -1,0 +1,19 @@
+.position-cell,
+.name-cell,
+.type-cell,
+.action-cell {
+    text-align: center;
+}
+
+.mat-cell {
+    padding: 8px;
+    margin: 0;
+}
+
+.btn-edit {
+    margin-left: -25px;
+}
+
+.btn {
+    margin-top: -21px;
+}
