@@ -13,7 +13,7 @@ import { AdminAddQuotesComponent } from './components/admin-add-quotes/admin-add
 import { AdminReportComponent } from './components/admin-report/admin-report.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'admin', pathMatch: 'full' },
+  { path: '', redirectTo: 'admin/dashboard', pathMatch: 'full' },
   {
     path: 'admin', title: 'Admin Nav', component: AdminNavigationComponent, children: [
       { path: 'dashboard', title: 'Admin Dashboard', component: AdminDashboardComponent },
