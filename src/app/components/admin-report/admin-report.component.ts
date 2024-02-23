@@ -45,8 +45,10 @@ export class AdminReportComponent implements OnInit, OnDestroy {
       return
     } else {
       const selectedDate = form.value.selectedDate
+      const format = new Date(selectedDate)
+      console.log(format.toISOString().split('T')[0], 'formated');
       this.subscription.add(
-        this._service.getReports(selectedDate.toISOString()).subscribe({
+        this._service.getReports(format).subscribe({ // instead of selectedDate.toISOString changed to format
           next: (res) => {
             this.dataSource.data = res.report
           },
