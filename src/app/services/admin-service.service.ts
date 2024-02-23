@@ -56,7 +56,7 @@ export class AdminService {
     return this._http.delete(`${this.commonUrl}/admin/stock/${id}`,)
   }
 
-  getReports(date: string | Date): Observable<IReportResModel> {
+  getReports(date?: string | Date): Observable<IReportResModel> {
     return this._http.post<IReportResModel>(`${this.commonUrl}/admin/report`, { date })
   }
 

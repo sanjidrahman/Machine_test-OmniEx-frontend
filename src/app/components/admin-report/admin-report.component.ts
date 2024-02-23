@@ -23,9 +23,8 @@ export class AdminReportComponent implements OnDestroy {
   ) { }
 
   ngAfterViewInit() {
-    const today = new Date().toISOString()
     this.subscription.add(
-      this._service.getReports(today).subscribe({
+      this._service.getReports().subscribe({
         next: (res) => {
           this.dataSource.data = res.report
         },
@@ -42,8 +41,6 @@ export class AdminReportComponent implements OnDestroy {
       return
     } else {
       const selectedDate = form.value.selectedDate
-      // const format = new Date(selectedDate)
-      // console.log(format.toISOString().split('T')[0], 'formated');
       this.subscription.add(
         this._service.getReports(selectedDate.toISOString()).subscribe({ // instead of selectedDate.toISOString changed to format
           next: (res) => {
