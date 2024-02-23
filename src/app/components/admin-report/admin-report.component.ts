@@ -11,9 +11,9 @@ import { IReportModel } from '../../interfaces/app.interfaces';
   templateUrl: './admin-report.component.html',
   styleUrls: ['./admin-report.component.css']
 })
-export class AdminReportComponent implements OnInit, OnDestroy {
+export class AdminReportComponent implements OnDestroy {
 
-  displayedColumns: string[] = ['position', 'name', 'avg', 'due', 'action'];
+  displayedColumns: string[] = ['position', 'supplier', 'buyer', 'avg', 'due', 'action'];
   dataSource = new MatTableDataSource<IReportModel>([]);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   subscription = new Subscription()
@@ -22,7 +22,7 @@ export class AdminReportComponent implements OnInit, OnDestroy {
     private _service: AdminService
   ) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit() {
     const today = new Date().toISOString()
     this.subscription.add(
       this._service.getReports(today).subscribe({
@@ -34,9 +34,6 @@ export class AdminReportComponent implements OnInit, OnDestroy {
         }
       })
     )
-  }
-
-  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
@@ -65,9 +62,9 @@ export class AdminReportComponent implements OnInit, OnDestroy {
 
   }
 
-  onView(id: string) {
+  // onView(id: string) {
 
-  }
+  // }
 
   onEdit(id: string) {
 

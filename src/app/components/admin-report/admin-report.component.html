@@ -21,14 +21,19 @@
                 <td mat-cell *matCellDef="let element; let i=index"> {{i + 1}}. </td>
             </ng-container>
 
-            <ng-container matColumnDef="name">
+            <ng-container matColumnDef="supplier">
                 <th mat-header-cell *matHeaderCellDef> Supplier Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.supplierData?.name}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="buyer">
+                <th mat-header-cell *matHeaderCellDef> Buyer Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.buyerData?.name}} </td>
+            </ng-container>
+
             <ng-container matColumnDef="avg">
                 <th mat-header-cell *matHeaderCellDef> Avg. Rate </th>
-                <td mat-cell *matCellDef="let element"> {{element.avg_rate}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.avgRate}} </td>
             </ng-container>
 
             <ng-container matColumnDef="due">
@@ -53,9 +58,9 @@
                         <button class="btn" mat-icon-button color="primary" (click)="onEdit(element._id)">
                             <mat-icon>edit</mat-icon>
                         </button>
-                        <button class="btn" mat-icon-button color="primary" (click)="onView(element._id)">
+                        <!-- <button class="btn" mat-icon-button color="primary" (click)="onView(element._id)">
                             <mat-icon>receipt</mat-icon>
-                        </button>
+                        </button> -->
                     </div>
                 </td>
             </ng-container>

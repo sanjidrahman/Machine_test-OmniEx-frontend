@@ -67,8 +67,40 @@ export interface IQuoteRecordModel {
 }
 
 export interface IReportModel {
-    _id: string
-    avg_rate: number
-    supplierData: IEntityModel
+    supplierData: SupplierData
     dueAmount: number
+    buyerData: BuyerData
+    avgRate: number
 }
+
+export interface SupplierData {
+    name: string
+}
+
+export interface BuyerData {
+    name: string
+}
+
+// export interface IReportModel {
+//     _id: string
+//     buyerId: string
+//     supplierId: string
+//     date: string
+//     time: string
+//     amount: number
+//     quantity: number
+//     rate: number
+//     __v: number
+//     supplierData: IEntityModel
+//     sendRecordData: ISendRecordModel
+//     buyerData: IEntityModel
+//     dueAmount: number
+// }
+
+// export interface IReportModel {
+//     _id: string
+//     avg_rate: number
+//     supplierData: IEntityModel
+//     dueAmount: number
+// }
+
