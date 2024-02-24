@@ -28,7 +28,6 @@ import { AdminService } from './services/admin-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgToastModule } from 'ng-angular-popup';
 import { NgConfirmModule } from 'ng-confirm-box';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { AdminSendActivityComponent } from './components/admin-send-activity/admin-send-activity.component';
 import { AdminAddSendActivityComponent } from './components/admin-add-send-activity/admin-add-send-activity.component';
 import { AdminAddReceiveActivityComponent } from './components/admin-add-receive-activity/admin-add-receive-activity.component';
@@ -38,6 +37,7 @@ import { AdminQuoteLedgerComponent } from './components/admin-quote-ledger/admin
 import { AdminAddQuotesComponent } from './components/admin-add-quotes/admin-add-quotes.component'
 import { MatNativeDateModule } from '@angular/material/core';
 import { AdminReportComponent } from './components/admin-report/admin-report.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -80,10 +80,11 @@ import { AdminReportComponent } from './components/admin-report/admin-report.com
     NgConfirmModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgxMaterialTimepickerModule,
+    NgxMaterialTimepickerModule.setOpts('ar-AE', 'arab'),
   ],
   providers: [
     AdminService,
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AdminService } from '../../services/admin-service.service';
 import { Subscription } from 'rxjs';
 import { IReportModel } from '../../interfaces/app.interfaces';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-admin-report',
@@ -19,7 +20,8 @@ export class AdminReportComponent implements OnDestroy {
   subscription = new Subscription()
 
   constructor(
-    private _service: AdminService
+    private _service: AdminService,
+    private _datepipe: DatePipe,
   ) { }
 
   ngAfterViewInit() {
