@@ -32,7 +32,6 @@ export class AdminAddReceiveActivityComponent {
       quantity: ['', Validators.required],
       rate: ['', Validators.required],
       date: ['', Validators.required],
-      amount: ['', Validators.required],
       time: ['', Validators.required],
     })
 

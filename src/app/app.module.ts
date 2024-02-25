@@ -80,7 +80,7 @@ import { DatePipe } from '@angular/common';
     NgConfirmModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgxMaterialTimepickerModule.setOpts('ar-AE', 'arab'),
+    NgxMaterialTimepickerModule,
   ],
   providers: [
     AdminService,
